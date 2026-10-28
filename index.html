@@ -18,7 +18,9 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#inicio"><img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPgoJPHBhdGggZD0iTTAgMGgzMnYzMkgweiIgZmlsbD0ibm9uZSIgLz4KCTxnIGZpbGw9Im5vbmUiPgoJCTxwYXRoIGZpbGw9IiM1MzM1NjYiIGQ9Ik04IDI2aDE5VjRhMiAyIDAgMCAwLTItMkg4eiIgLz4KCQk8cGF0aCBmaWxsPSIjZDNkM2QzIiBkPSJNNiAyN2gyMXYySDZ6IiAvPgoJCTxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMi41IDdhMSAxIDAgMCAxIDEtMWg1YTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxaC01YTEgMSAwIDAgMS0xLTF6IiAvPgoJCTxwYXRoIGZpbGw9IiMzMjFiNDEiIGQ9Ik02LjUgMkExLjUgMS41IDAgMCAwIDUgMy41VjI4aDFhMSAxIDAgMCAxIDEtMWgxVjJ6IiAvPgoJCTxwYXRoIGZpbGw9IiM2YjQzOGIiIGQ9Ik02LjUgMjZBMS41IDEuNSAwIDAgMCA1IDI3LjV2MUExLjUgMS41IDAgMCAwIDYuNSAzMGgxOWExLjUgMS41IDAgMCAwIDEuNDE1LTFIN2ExIDEgMCAxIDEgMC0yaDIwdi0xeiIgLz4KCQk8cGF0aCBmaWxsPSIjNmI0MzhiIiBkPSJNMjMgMmgxdjI4aC0xeiIgLz4KCTwvZz4KPC9zdmc+Cg=="
-                    alt="Logo" class="img-fluid "></a>
+                    alt="Logo" class="logo-navbar">
+                    <span>Cuaderno viejo</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Navegación">
                 <span class="navbar-toggler-icon"></span>
@@ -41,6 +43,34 @@
             </div>
         </div>
     </nav>
+
+
+    <section class="container py-5">
+        <div class="row g-4">
+            <!-- columna izq -->
+            <div class="col-12 col-md-4">
+                <h2>Indice</h2>
+                <p>Mis pendientes</p>
+                <ul id="lista">
+
+                </ul>
+                <a href="" class="btn btn-primary">Nueva tarea</a>
+            </div>
+
+            <!-- columna der -->
+            <div class="col-12 col-md-8">
+                <p id="fecha">fecha del día js</p>
+                <h2>Mis apuntes</h2>
+
+                <div class="row">
+                    <section id="seccion-tareas" class="catalogo mb-5">
+                        <div id="catalogo-tareas" class="row g-4"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </body>
 
 </html>
