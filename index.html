@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="./img/logof.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cuaderno viejo</title>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary sticky-top bg-light shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#inicio"><img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPgoJPHBhdGggZD0iTTAgMGgzMnYzMkgweiIgZmlsbD0ibm9uZSIgLz4KCTxnIGZpbGw9Im5vbmUiPgoJCTxwYXRoIGZpbGw9IiM1MzM1NjYiIGQ9Ik04IDI2aDE5VjRhMiAyIDAgMCAwLTItMkg4eiIgLz4KCQk8cGF0aCBmaWxsPSIjZDNkM2QzIiBkPSJNNiAyN2gyMXYySDZ6IiAvPgoJCTxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMi41IDdhMSAxIDAgMCAxIDEtMWg1YTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxaC01YTEgMSAwIDAgMS0xLTF6IiAvPgoJCTxwYXRoIGZpbGw9IiMzMjFiNDEiIGQ9Ik02LjUgMkExLjUgMS41IDAgMCAwIDUgMy41VjI4aDFhMSAxIDAgMCAxIDEtMWgxVjJ6IiAvPgoJCTxwYXRoIGZpbGw9IiM2YjQzOGIiIGQ9Ik02LjUgMjZBMS41IDEuNSAwIDAgMCA1IDI3LjV2MUExLjUgMS41IDAgMCAwIDYuNSAzMGgxOWExLjUgMS41IDAgMCAwIDEuNDE1LTFIN2ExIDEgMCAxIDEgMC0yaDIwdi0xeiIgLz4KCQk8cGF0aCBmaWxsPSIjNmI0MzhiIiBkPSJNMjMgMmgxdjI4aC0xeiIgLz4KCTwvZz4KPC9zdmc+Cg=="
+                    alt="Logo" class="img-fluid "></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-secondary" type="button" aria-label="accesibilidad">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPgoJPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIgLz4KCTxnIGZpbGw9Im5vbmUiPgoJCTxwYXRoIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41IiBkPSJtNS43NSA4LjU1bDMuNzIgMS40OGMxLjIzLjQ4IDEuODQuNzIgMi4xOCAxLjIzcy4zNSAxLjE3LjM1IDIuNDl2MS44OWMwIC42OSAwIDEuMDMtLjExIDEuMzVzLS4zMy41OS0uNzUgMS4xM2wtMy4zIDQuMThNMTguMjUgOC41NWwtMy43MiAxLjQ4Yy0xLjIzLjQ4LTEuODQuNzItMi4xOCAxLjIzUzEyIDEyLjQzIDEyIDEzLjc1djEuODljMCAuNjkgMCAxLjAzLjExIDEuMzVzLjMzLjU5Ljc1IDEuMTNsMy4zIDQuMTgiIC8+CgkJPGNpcmNsZSBjeD0iMTIiIGN5PSI0LjU4IiByPSIyLjg4IiBmaWxsPSJjdXJyZW50Q29sb3IiIG9wYWNpdHk9Ii4yIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAxMiA0LjU4KSIgLz4KCQk8Y2lyY2xlIGN4PSIxMiIgY3k9IjQuNTgiIHI9IjIuODgiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAxMiA0LjU4KSIgLz4KCTwvZz4KPC9zdmc+Cg=="
+                                alt="" width="20" height="20">
+                        </button>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-outline-secondary" type="button" aria-label="Buscar tareas">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+Cgk8cGF0aCBkPSJNMCAwaDUxMnY1MTJIMHoiIGZpbGw9Im5vbmUiIC8+Cgk8cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Im00NzkuNiAzOTkuNzE2bC04MS4wODQtODEuMDg0bC02Mi4zNjgtMjUuNzY3QTE3NSAxNzUgMCAwIDAgMzY4IDE5MmMwLTk3LjA0Ny03OC45NTMtMTc2LTE3Ni0xNzZTMTYgOTQuOTUzIDE2IDE5MnM3OC45NTMgMTc2IDE3NiAxNzZhMTc1LjAzIDE3NS4wMyAwIDAgMCAxMDEuNjE5LTMyLjM3N2wyNS43IDYyLjJsODEuMDgxIDgxLjA4OGE1NiA1NiAwIDEgMCA3OS4yLTc5LjE5NU00OCAxOTJjMC03OS40IDY0LjYtMTQ0IDE0NC0xNDRzMTQ0IDY0LjYgMTQ0IDE0NHMtNjQuNiAxNDQtMTQ0IDE0NFM0OCAyNzEuNCA0OCAxOTJtNDA4Ljk3MSAyNjQuMjg0YTI0LjAzIDI0LjAzIDAgMCAxLTMzLjk0MiAwbC03Ni41NzItNzYuNTcybC0yMy44OTQtNTcuODM1bDU3LjgzNyAyMy44OTRsNzYuNTczIDc2LjU3MmEyNC4wMyAyNC4wMyAwIDAgMS0uMDAyIDMzLjk0MSIgLz4KPC9zdmc+Cg=="
+                                alt="" width="20" height="20">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>
