@@ -1,0 +1,234 @@
+:root {
+    --crema: #F5F0E6;
+    --papel: #FFFCF5;
+    --tinta: #292721;
+    --vino: #722F37;
+    --kraft: #B6A58A;
+    --gris-calido: #827768;
+}
+
+/* contenido general*/
+
+body {
+    background-color: var(--crema);
+    color: var(--tinta);
+    font-family: Georgia, serif;
+}
+
+/*navbar*/
+
+#navbar {
+    background-color: var(--papel) !important;
+    border-bottom: 2px solid var(--kraft);
+    padding: 12px 30px;
+}
+
+#navbar .navbar-brand {
+    color: var(--tinta);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#navbar .btn {
+    color: var(--vino);
+    border-color: var(--vino);
+}
+
+#navbar .btn:hover {
+    background-color: var(--vino);
+    color: var(--papel);
+}
+
+/*tareas pendientes*/
+
+#lista-pendientes {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#lista-pendientes li {
+    background-color: var(--papel);
+    border-left: 4px solid var(--vino);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: var(--tinta);
+}
+
+#lista-pendientes li:hover {
+    background-color: #F0E8D9;
+}
+
+.col-md-4 h2 {
+    color: var(--vino);
+    font-weight: bold;
+}
+
+.col-md-4 p {
+    color: var(--gris-calido);
+}
+
+.col-md-4 .btn {
+    background-color: var(--vino);
+    border-color: var(--vino);
+    color: var(--papel);
+}
+
+.col-md-4 .btn:hover {
+    background-color: var(--tinta);
+    border-color: var(--tinta);
+}
+
+/*tareas*/
+
+#catalogo-tareas .card {
+    background-color: var(--papel);
+    color: var(--tinta);
+    border: 1px solid var(--kraft);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(41, 39, 33, 0.08);
+}
+
+#catalogo-tareas .card-header {
+    border-bottom: 1px solid var(--kraft);
+    padding: 12px 16px;
+}
+
+#catalogo-tareas .card-body {
+    padding: 20px;
+}
+
+#catalogo-tareas .card-title {
+    color: var(--vino);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+#catalogo-tareas .card-text {
+    color: var(--tinta);
+}
+
+#catalogo-tareas .card-body p {
+    color: var(--gris-calido);
+}
+
+#catalogo-tareas .card-body strong {
+    color: var(--tinta);
+}
+
+#catalogo-tareas .card-body hr {
+    border-color: var(--kraft);
+    opacity: 0.7;
+}
+
+#catalogo-tareas .card .btn-outline-secondary {
+    color: var(--gris-calido);
+    border-color: var(--kraft);
+}
+
+#catalogo-tareas .card .btn-outline-secondary:hover {
+    background-color: var(--kraft);
+    color: var(--tinta);
+}
+
+#catalogo-tareas .card .btn-outline-success {
+    color: #526B4D;
+    border-color: #526B4D;
+}
+
+#catalogo-tareas .card .btn-outline-success:hover {
+    background-color: #526B4D;
+    color: var(--papel);
+}
+
+/*filtros*/
+
+.btn-group .btn {
+    color: var(--gris-calido);
+    background-color: var(--papel);
+    border-color: var(--kraft);
+}
+
+.btn-group .btn:hover {
+    color: var(--vino);
+    background-color: #F0E8D9;
+    border-color: var(--kraft);
+}
+
+.btn-group .btn.active {
+    color: var(--papel);
+    background-color: var(--vino);
+    border-color: var(--vino);
+}
+
+/*titulos y apuntes*/
+
+.col-md-8 h2 {
+    color: var(--vino);
+    font-weight: bold;
+}
+
+#fecha {
+    color: var(--gris-calido);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+/*modal de agregar tarea*/
+
+#modalTarea .modal-content {
+    background-color: var(--papel);
+    color: var(--tinta);
+    border: 1px solid var(--kraft);
+    border-radius: 12px;
+}
+
+#modalTarea .modal-header {
+    border-bottom: 1px solid var(--kraft);
+}
+
+#modalTarea .modal-title {
+    color: var(--vino);
+    font-weight: bold;
+}
+
+#modalTarea .modal-body label {
+    color: var(--tinta);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+#modalTarea .modal-body input,
+#modalTarea .modal-body textarea {
+    background-color: #FFFFFF;
+    border: 1px solid var(--kraft);
+    color: var(--tinta);
+}
+
+#modalTarea .modal-body input:focus,
+#modalTarea .modal-body textarea:focus {
+    border-color: var(--vino);
+    box-shadow: 0 0 0 0.2rem rgba(114, 47, 55, 0.15);
+}
+
+#modalTarea .modal-footer {
+    border-top: 1px solid var(--kraft);
+}
+
+#modalTarea .modal-footer .btn-primary {
+    background-color: var(--vino);
+    border-color: var(--vino);
+}
+
+#modalTarea .modal-footer .btn-primary:hover {
+    background-color: var(--tinta);
+    border-color: var(--tinta);
+}
+
+#modalTarea .modal-footer .btn-secondary {
+    background-color: var(--kraft);
+    border-color: var(--kraft);
+    color: var(--tinta);
+}
