@@ -12,6 +12,24 @@ const alertaValidacion = document.getElementById("alertaValidacion")
 const estado = document.getElementById("estadoTarea");
 //array para poder almacenar todas las tareas
 let tareas = [];
+let indiceTareaEditar = null;
+const filtroEstado=document.getElementById("filtroEstado");
+const buscarTarea=document.getElementById("buscarTarea")
+const ordenarTareas=document.getElementById("ordenarTareas")
+
+//evento editar
+nuevaTarea.addEventListener("click", () => {
+    nombre.value = "";
+    descripcion.value = "";
+    fechaInicio.value = "";
+    fechaFinalizacion.value = "";
+    nota.value = "";
+    color.value = "#FFFFFF";
+    estado.value = "";
+
+    indiceTareaEditar = null;
+    alertaValidacion.classList.add("d-none");
+});
 
 //Evento para guardar
 
@@ -41,7 +59,12 @@ btnGuardar.addEventListener("click", () => {
     } else {
         alertaValidacion.classList.add("d-none");
     }
-    tareas.push(tarea)
+    if (indiceTareaEditar !== null) {
+        tareas[indiceTareaEditar] = tarea;
+        indiceTareaEditar = null;
+    }else{
+        tareas.push(tarea);
+    }
     mostrarTareas()
 });
 
@@ -59,9 +82,26 @@ function validFormFieldInput(tarea) {
 
 
 function mostrarTareas() {
+    let tareasFiltradas = tareas.map((tarea, i) => ({ //fuciones paq los filtros filtren jja    
+    ...tarea,
+    indiceOriginal: i
+    }));
+    if (filtroEstado.value !== "Todas") {
+    tareasFiltradas = tareasFiltradas.filter(
+        tarea => tarea.estado === filtroEstado.value
+    );
+    if (ordenarTareas.value === "recientes") {
+    tareasFiltradas.reverse();
+    }else{
+    tareasFiltradas.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
+    }
+}
     catalogo.innerHTML = "" //como siempre se limpia primero
+    indice.innerHTML = "" //limpia la parte del indice pa mostrar tareas despues
     for (let i = 0; i < tareas.length; i++) {
-        let tareaIndice = tareas[i]; //tareaIndice es la tarea actual
+        let tareaIndice = tareasFiltradas[i];
+        let indiceOriginal = tareaIndice.indiceOriginal;
+        //let tareaIndice = tareas[i]; //tareaIndice es la tarea actual
         let colorEstado;
 
         if (tareaIndice.estado === "Pendiente") {
@@ -96,9 +136,44 @@ function mostrarTareas() {
                     <p class="card-text">
                         <strong>Nota:</strong> ${tareaIndice.nota}
                     </p>
+                    <div class="d-flex justify-content-end gap-2 mt-3">
+                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                            onclick="editarTarea(${indiceOriginal})" 
+                            data-bs-toggle="modal" data-bs-target="#modalTarea">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-outline-success btn-sm"
+                            onclick="completarTarea(${indiceOriginal})">
+                            Completar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>`
         catalogo.innerHTML = catalogo.innerHTML + tarjeta;
+        let tituloTarea = document.createElement("li");
+        tituloTarea.textContent = tareaIndice.nombre;
+        indice.appendChild(tituloTarea);
     };
+}
+filtroEstado.addEventListener("change", mostrarTareas);
+buscarTarea.addEventListener("input", mostrarTareas);
+ordenarTareas.addEventListener("change", mostrarTareas);
+function editarTarea(i) {
+    let tarea = tareas[i];
+
+    nombre.value = tarea.nombre;
+    descripcion.value = tarea.descripcion;
+    fechaInicio.value = tarea.fechaInicio;
+    fechaFinalizacion.value = tarea.fechaFinalizacion;
+    nota.value = tarea.nota;
+    color.value = tarea.color;
+    estado.value = tarea.estado;
+
+    indiceTareaEditar = i;
+}
+
+function completarTarea(i) {
+    tareas[i].estado = "Completada";
+    mostrarTareas();
 }

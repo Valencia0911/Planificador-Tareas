@@ -51,16 +51,54 @@
         <div class="row g-4">
             <!-- columna izq -->
             <div class="col-12 col-md-4">
+
                 <h2>Índice</h2>
                 <p>Mis pendientes</p>
-                <ul id="lista">
-                    <li>Estudiar JavaScript</li>
-                    <li>Terminar taller de HTML</li>
 
+                <!-- Filtros -->
+                <div class="filtros-tareas">
+
+                    <h5>Organizar tareas</h5>
+
+                    <div class="mb-3">
+                        <label for="filtroEstado" class="form-label">Estado</label>
+                        <select class="form-select" id="filtroEstado">
+                            <option value="Todas">Todas</option>
+                            <option value="Pendiente">Pendientes</option>
+                            <option value="En progreso">En progreso</option>
+                            <option value="Completada">Completadas</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="buscarTarea" class="form-label">Buscar tarea</label>
+                        <input type="search" class="form-control" id="buscarTarea" placeholder="Nombre de la tarea...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordenarTareas" class="form-label">Ordenar por</label>
+                        <select class="form-select" id="ordenarTareas">
+                            <option value="recientes">Más recientes</option>
+                            <option value="antiguas">Más antiguas</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <!-- Lista dinámica de tareas -->
+                <h5>Lista de tareas</h5>
+                <ul id="lista">
+                    <!-- Los títulos se generan desde JavaScript -->
                 </ul>
+
+                <!-- Botón para crear tareas -->
                 <button type="button" id="nuevaTarea" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalTarea">Nueva
-                    tarea</button>
+                    data-bs-target="#modalTarea">
+                    Nueva tarea
+                </button>
+
             </div>
 
             <!-- columna der -->
@@ -72,48 +110,7 @@
                 <div class="row">
                     <section id="seccion-tareas" class="catalogo mb-5">
                         <div id="catalogoTareas" class="row g-4">
-
-                            <!--cambiar a futuro por el js-->
-                            <div class="col-12 col-lg-6">
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="btn-group mb-4" role="group" aria-label="Filtrar tareas">
-                                        <button type="button" class="btn btn-outline-secondary active">Todas</button>
-                                        <button type="button" class="btn btn-outline-secondary">Pendientes</button>
-                                        <button type="button" class="btn btn-outline-secondary">Completadas</button>
-                                    </div>
-                                </div>
-                                <div class="card h-100">
-                                    <div class="card-header" style="background-color: #d8c4e8;">
-                                        <span class="badge text-bg-warning">Pendiente</span>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Estudiar JavaScript</h5>
-
-                                        <p class="card-text">
-                                            Repasar funciones, arreglos y objetos para el próximo taller.
-                                        </p>
-
-                                        <p class="mb-2"><strong>Fecha de inicio:</strong> 03/11/2026</p>
-                                        <p class="mb-2"><strong>Finalización tentativa:</strong> 10/11/2026</p>
-
-                                        <hr>
-
-                                        <p class="card-text">
-                                            <strong>Nota:</strong> Practicar los ejercicios de la clase.
-                                        </p>
-
-                                        <div class="d-flex justify-content-end gap-2 mt-3">
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                Editar
-                                            </button>
-                                            <button type="button" class="btn btn-outline-success btn-sm">
-                                                Completar
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--acaá iba la estatica, ya se borró porq se volvió dinamico-->
                         </div>
                     </section>
                 </div>
