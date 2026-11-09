@@ -95,12 +95,18 @@ function mostrarTareas() {
         tareasFiltradas = tareasFiltradas.filter(
             tarea => tarea.estado === filtroEstado.value
         );
-        if (ordenarTareas.value === "recientes") {
-            tareasFiltradas.reverse();
-        } else {
-            tareasFiltradas.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
-        }
     }
+    if (ordenarTareas.value === "recientes") {
+        tareasFiltradas.sort((a, b) => new Date(b.fechaInicio) - new Date(a.fechaInicio));
+    } else {
+        tareasFiltradas.sort((a, b) => new Date(a.fechaInicio) - new Date(b.fechaInicio));
+    }
+    let textoBusqueda = buscarTarea.value.toLowerCase().trim();
+
+    tareasFiltradas = tareasFiltradas.filter(
+        tarea => tarea.nombre.toLowerCase().includes(textoBusqueda)
+    );
+
     catalogo.innerHTML = "" //como siempre se limpia primero
     indice.innerHTML = "" //limpia la parte del indice pa mostrar tareas despues
     for (let i = 0; i < tareas.length; i++) {
