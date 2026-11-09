@@ -1,3 +1,8 @@
+//TASKMANAGER
+const taskManager = new TaskManager();
+console.log(taskManager.tasks);
+
+
 const nuevaTarea = document.getElementById("nuevaTarea");
 const nombre = document.getElementById("nombreTarea");
 const descripcion = document.getElementById("descripcionTarea");
@@ -13,9 +18,9 @@ const estado = document.getElementById("estadoTarea");
 //array para poder almacenar todas las tareas
 let tareas = [];
 let indiceTareaEditar = null;
-const filtroEstado=document.getElementById("filtroEstado");
-const buscarTarea=document.getElementById("buscarTarea")
-const ordenarTareas=document.getElementById("ordenarTareas")
+const filtroEstado = document.getElementById("filtroEstado");
+const buscarTarea = document.getElementById("buscarTarea")
+const ordenarTareas = document.getElementById("ordenarTareas")
 
 //evento editar
 nuevaTarea.addEventListener("click", () => {
@@ -62,7 +67,7 @@ btnGuardar.addEventListener("click", () => {
     if (indiceTareaEditar !== null) {
         tareas[indiceTareaEditar] = tarea;
         indiceTareaEditar = null;
-    }else{
+    } else {
         tareas.push(tarea);
     }
     mostrarTareas()
@@ -83,19 +88,19 @@ function validFormFieldInput(tarea) {
 
 function mostrarTareas() {
     let tareasFiltradas = tareas.map((tarea, i) => ({ //fuciones paq los filtros filtren jja    
-    ...tarea,
-    indiceOriginal: i
+        ...tarea,
+        indiceOriginal: i
     }));
     if (filtroEstado.value !== "Todas") {
-    tareasFiltradas = tareasFiltradas.filter(
-        tarea => tarea.estado === filtroEstado.value
-    );
-    if (ordenarTareas.value === "recientes") {
-    tareasFiltradas.reverse();
-    }else{
-    tareasFiltradas.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
+        tareasFiltradas = tareasFiltradas.filter(
+            tarea => tarea.estado === filtroEstado.value
+        );
+        if (ordenarTareas.value === "recientes") {
+            tareasFiltradas.reverse();
+        } else {
+            tareasFiltradas.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
+        }
     }
-}
     catalogo.innerHTML = "" //como siempre se limpia primero
     indice.innerHTML = "" //limpia la parte del indice pa mostrar tareas despues
     for (let i = 0; i < tareas.length; i++) {
@@ -110,6 +115,13 @@ function mostrarTareas() {
             colorEstado = "text-bg-warning";
         } else if (tareaIndice.estado === "Completada") {
             colorEstado = "text-bg-success";
+        }
+        //Cambio de btn para q sea editable
+        let textobtn;
+        if (tareaIndice.estado === "Completada") {
+            textobtn = "Desmarcar";
+        } else {
+            textobtn = "Completar";
         }
         const tarjeta = `
         <div class="col-12 col-lg-6">
@@ -144,7 +156,7 @@ function mostrarTareas() {
                         </button>
                         <button type="button" class="btn btn-outline-success btn-sm"
                             onclick="completarTarea(${indiceOriginal})">
-                            Completar
+                            ${textobtn}
                         </button>
                     </div>
                 </div>
@@ -173,7 +185,12 @@ function editarTarea(i) {
     indiceTareaEditar = i;
 }
 
-function completarTarea(i) {
-    tareas[i].estado = "Completada";
+function completarTarea(i) { //editar el btn paq quede pendiente despues d clickear
+    //tareas[i].estado = "Completada";
+    if (tareas[i].estado === "Completada") {
+        tareas[i].estado = "Pendiente"
+    } else {
+        tareas[i].estado = "Completada"
+    }
     mostrarTareas();
 }
