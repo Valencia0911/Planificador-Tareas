@@ -125,55 +125,59 @@
                     <h5 class="modal-title" id="tituloModal">Nueva tarea</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body">
-                    <div id="alertaValidacion" class="alert alert-danger d-none" role="alert">
-                        Por favor, revisa los campos del formulario.
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombreTarea" class="form-label">Nombre de la tarea</label>
-                        <input type="text" class="form-control" id="nombreTarea" placeholder="Ej. Estudiar JavaScript">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descripcionTarea" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="descripcionTarea" rows="3"
-                            placeholder="Descripción la tarea"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fechaInicio" class="form-label">Fecha de inicio</label>
-                        <input type="date" class="form-control" id="fechaInicio">
-                    </div>
+                <form id="newTaskForm">
+                    <div class="modal-body">
+                        <div id="alertaValidacion" class="alert alert-danger d-none" role="alert">
+                            Por favor, revisa los campos del formulario.
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombreTarea" class="form-label">Nombre de la tarea</label>
+                            <input type="text" class="form-control" id="nombreTarea"
+                                placeholder="Ej. Estudiar JavaScript">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcionTarea" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcionTarea" rows="3"
+                                placeholder="Descripción la tarea"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="fechaFinalizacion" class="form-label">Fecha tentativa de finalización</label>
-                        <input type="date" class="form-control" id="fechaFinalizacion">
+                        <div class="mb-3">
+                            <label for="fechaFinalizacion" class="form-label">Fecha tentativa de
+                                finalización</label>
+                            <input type="date" class="form-control" id="fechaFinalizacion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="notaTarea" class="form-label">Nota adicional</label>
+                            <textarea class="form-control" id="notaTarea" rows="3"
+                                placeholder="Escribe alguna nota o recordatorio..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="colorTarea" class="form-label">Color de la tarea</label>
+                            <input type="color" class="form-control form-control-color" id="colorTarea" value="#d8c4e8">
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoTarea" class="form-label">Estado</label>
+                            <select class="form-select" id="estadoTarea">
+                                <option value="" selected disabled>Selecciona un estado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En progreso">En progreso</option>
+                                <option value="Completada">Completada</option>
+                            </select>
+                        </div> <!--se agrega para ponerle un estado(me había faltado)-->
                     </div>
-                    <div class="mb-3">
-                        <label for="notaTarea" class="form-label">Nota adicional</label>
-                        <textarea class="form-control" id="notaTarea" rows="3"
-                            placeholder="Escribe alguna nota o recordatorio..."></textarea>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="guardarTarea">
+                            Guardar tarea
+                        </button>
                     </div>
-                    <div class="mb-3">
-                        <label for="colorTarea" class="form-label">Color de la tarea</label>
-                        <input type="color" class="form-control form-control-color" id="colorTarea" value="#d8c4e8">
-                    </div>
-                    <div class="mb-3">
-                        <label for="estadoTarea" class="form-label">Estado</label>
-                        <select class="form-select" id="estadoTarea">
-                            <option value="" selected disabled>Selecciona un estado</option>
-                            <option value="Pendiente">Pendiente</option>
-                            <option value="En progreso">En progreso</option>
-                            <option value="Completada">Completada</option>
-                        </select>
-                    </div> <!--se agrega para ponerle un estado(me había faltado)-->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary" id="guardarTarea">
-                        Guardar tarea
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

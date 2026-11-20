@@ -10,13 +10,14 @@ const fechaInicio = document.getElementById("fechaInicio");
 const fechaFinalizacion = document.getElementById("fechaFinalizacion");
 const nota = document.getElementById("notaTarea");
 const color = document.getElementById("colorTarea");
-const btnGuardar = document.getElementById("guardarTarea");
+//const btnGuardar = document.getElementById("guardarTarea");
+const newTaskForm = document.getElementById("newTaskForm"); //Se reorganiza por tarea 5
 const catalogo = document.getElementById("catalogoTareas");
 const indice = document.getElementById("lista");
 const alertaValidacion = document.getElementById("alertaValidacion")
 const estado = document.getElementById("estadoTarea");
-//array para poder almacenar todas las tareas
-let tareas = [];
+//array para poder almacenar todas las tareas(ya no sirve)
+//let tareas = [];
 let indiceTareaEditar = null;
 const filtroEstado = document.getElementById("filtroEstado");
 const buscarTarea = document.getElementById("buscarTarea")
@@ -38,7 +39,8 @@ nuevaTarea.addEventListener("click", () => {
 
 //Evento para guardar
 
-btnGuardar.addEventListener("click", () => {
+newTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
     let nombreTexto = nombre.value;
     let descripcionTexto = descripcion.value;
     let fechaInicioTexto = fechaInicio.value;
@@ -58,19 +60,32 @@ btnGuardar.addEventListener("click", () => {
         color: colorTexto,
         estado: estadoTexto
     }
-    if (validFormFieldInput(tarea) === false) {        // si la validacion falla se detiene todo el evento click
+    if (validFormFieldInput(tarea) === false) {        // si la validacion falla se detiene todo el evento submit
         alertaValidacion.classList.remove("d-none");
         return;
     } else {
         alertaValidacion.classList.add("d-none");
     }
     if (indiceTareaEditar !== null) {
-        tareas[indiceTareaEditar] = tarea;
+        taskManager.tasks[indiceTareaEditar] = {  //se actualiza conservando el id inicial
+            ...tarea,
+            id: taskManager.tasks[indiceTareaEditar].id
+        };
         indiceTareaEditar = null;
     } else {
-        tareas.push(tarea);
+        taskManager.addTask(
+            nombreTexto,
+            descripcionTexto,
+            fechaInicioTexto,
+            fechaFinalizacionTexto,
+            notaTexto,
+            colorTexto,
+            estadoTexto
+        );
     }
     mostrarTareas()
+    //limpiar
+    newTaskForm.reset();
 });
 
 function validFormFieldInput(tarea) {
@@ -87,7 +102,8 @@ function validFormFieldInput(tarea) {
 
 
 function mostrarTareas() {
-    let tareasFiltradas = tareas.map((tarea, i) => ({ //fuciones paq los filtros filtren jja    
+    //let tareasFiltradas = tareas.map((tarea, i) => ({ //fuciones paq los filtros filtren jja    
+    let tareasFiltradas = taskManager.tasks.map((tarea, i) => ({ //fuciones paq los filtros filtren jja    
         ...tarea,
         indiceOriginal: i
     }));
@@ -109,7 +125,8 @@ function mostrarTareas() {
 
     catalogo.innerHTML = "" //como siempre se limpia primero
     indice.innerHTML = "" //limpia la parte del indice pa mostrar tareas despues
-    for (let i = 0; i < tareas.length; i++) {
+    //for (let i = 0; i < tareas.length; i++) {
+    for (let i = 0; i < tareasFiltradas.length; i++) {
         let tareaIndice = tareasFiltradas[i];
         let indiceOriginal = tareaIndice.indiceOriginal;
         //let tareaIndice = tareas[i]; //tareaIndice es la tarea actual
@@ -178,7 +195,8 @@ filtroEstado.addEventListener("change", mostrarTareas);
 buscarTarea.addEventListener("input", mostrarTareas);
 ordenarTareas.addEventListener("change", mostrarTareas);
 function editarTarea(i) {
-    let tarea = tareas[i];
+    //let tarea = tareas[i];
+    let tarea = taskManager.tasks[i];
 
     nombre.value = tarea.nombre;
     descripcion.value = tarea.descripcion;
@@ -193,10 +211,10 @@ function editarTarea(i) {
 
 function completarTarea(i) { //editar el btn paq quede pendiente despues d clickear
     //tareas[i].estado = "Completada";
-    if (tareas[i].estado === "Completada") {
-        tareas[i].estado = "Pendiente"
+    if (taskManager.tasks[i].estado === "Completada") {
+        taskManager.tasks[i].estado = "Pendiente"
     } else {
-        tareas[i].estado = "Completada"
+        taskManager.tasks[i].estado = "Completada"
     }
     mostrarTareas();
 }
