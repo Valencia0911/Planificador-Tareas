@@ -1,5 +1,6 @@
 //TASKMANAGER
 const taskManager = new TaskManager();
+taskManager.loadTasks();
 console.log(taskManager.tasks);
 
 
@@ -83,6 +84,7 @@ newTaskForm.addEventListener("submit", (event) => {
             estadoTexto
         );
     }
+    taskManager.saveTasks()
     mostrarTareas()
     //limpiar
     newTaskForm.reset();
@@ -146,8 +148,9 @@ function mostrarTareas() {
         } else {
             textobtn = "Completar";
         }
+        //se pone el id pa poner eliminar
         const tarjeta = `
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6" data-task-id="${tareaIndice.id}"> 
             <div class="card h-100">
                 <div class="card-header" style="background-color: ${tareaIndice.color};">
                     <span class="badge ${colorEstado}">${tareaIndice.estado}</span>
@@ -181,6 +184,9 @@ function mostrarTareas() {
                             onclick="completarTarea(${indiceOriginal})">
                             ${textobtn}
                         </button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button">
+                            Eliminar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -194,6 +200,19 @@ function mostrarTareas() {
 filtroEstado.addEventListener("change", mostrarTareas);
 buscarTarea.addEventListener("input", mostrarTareas);
 ordenarTareas.addEventListener("change", mostrarTareas);
+catalogo.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-button")) {
+        const tarjeta = event.target.closest("[data-task-id]");
+        const taskId = Number(tarjeta.dataset.taskId);
+
+        taskManager.deleteTask(taskId);
+        taskManager.saveTasks()
+        mostrarTareas();
+    }
+});
+mostrarTareas();
+
+
 function editarTarea(i) {
     //let tarea = tareas[i];
     let tarea = taskManager.tasks[i];
