@@ -18,9 +18,9 @@ class TaskManager {
         })
     }
     //borrar tarea
-    deleteTask(taskId){
-       const newTasks = [];
-       for(let task of this.tasks){
+    deleteTask(taskId) {
+        const newTasks = [];
+        for (let task of this.tasks) {
             if (task.id !== taskId) { //se conserva las tareas q no coinciden con la q queremos eliminar
                 newTasks.push(task);
             }
@@ -29,7 +29,7 @@ class TaskManager {
     }
 
     //persistencia de datos
-    saveTasks(){
+    saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
 
@@ -37,6 +37,11 @@ class TaskManager {
         const tasksGuardadas = localStorage.getItem("tasks");
         if (tasksGuardadas !== null) {
             this.tasks = JSON.parse(tasksGuardadas);
+
+            if (this.tasks.length > 0) {
+                this.currentId = Math.max(...this.tasks.map(task => task.id));
+            }
         }
+
     }
 }
